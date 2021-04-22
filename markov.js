@@ -1,6 +1,5 @@
 /** Textual markov chain generator */
 
-
 class MarkovMachine {
 
   /** build markov machine; read in text.*/

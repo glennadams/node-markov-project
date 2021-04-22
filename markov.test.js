@@ -1,11 +1,5 @@
 const { MarkovMachine } = require('./markov.js');
 
-// const text = 'the cat in the hat is in the hat';
-// const text2 = "Alice could only see her. She is such a new pair of white kid gloves and the blades of grass, but she remembered the number of bathing machines in the kitchen that did not like the wind, and was just beginning to grow up any more if you’d like it put the Dormouse again, so she went nearer to make out that it was certainly English."
-
-// let test = new MarkovMachine(text2);
-// test.makeText(15);
-
 describe('Testing Markov Methods', function() {
     // initialize variable
     let text;
@@ -32,7 +26,5 @@ describe('Testing Markov Methods', function() {
         let story2 = test.makeText();
         expect(story1.length).toBeGreaterThan(10);
         expect(story2.length).toBeGreaterThan(20);
-    })
-
-    
+    })  
 });

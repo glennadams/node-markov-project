@@ -21,9 +21,6 @@ class MarkovMachine {
     let chains = new Map();
     const firstWords = new Set();
     
-    
-    console.log('Number of words : ', this.words.length);
-    console.log('Words: ', this.words);
     // add words to the set, dups automatically excluded
     this.words.forEach(word => firstWords.add(word));
     
@@ -45,8 +42,6 @@ class MarkovMachine {
       }
     }
     this.chains = chains;
-    // console.log({firstWords});
-    console.log(chains);
     // clear the set
     firstWords.clear();
   }
@@ -54,7 +49,7 @@ class MarkovMachine {
 
   /** return random text from chains */
 
-  makeText(numWords = 10) {
+  makeText(numWords = 20) {
     let wordList = Array.from(this.chains.keys())
     let text = ''
 
@@ -62,11 +57,9 @@ class MarkovMachine {
       let index = Math.floor(Math.random() * (wordList.length));
       let word = wordList[index];
       text = text + ' ' + word;
-      console.log('index: ', index, 'word: ', word);
+      
       let list = this.chains.get(word);
-      console.log('list: ', list);
       let next = list[Math.floor(Math.random() * (list.length))]
-      console.log('next: ', next);
       if (next !== null) {
         text = text + ' ' + next;
       }

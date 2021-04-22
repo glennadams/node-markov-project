@@ -18,8 +18,9 @@ class MarkovMachine {
 
   makeChains() {
     // create a set to store the first words.
+    let chains = new Map();
     const firstWords = new Set();
-    const wordTable = {}
+    
     
     console.log('Number of words : ', this.words.length);
     console.log('Words: ', this.words);
@@ -30,24 +31,22 @@ class MarkovMachine {
     for (let word of firstWords) {
       let list = [];
       for (let i = 0; i < this.words.length; i++) {
-        
+        // Determine if word match and if at the end of the array
         if (word === this.words[i] && i !== this.words.length - 1) {
-           console.log('index: ', i, ' word: ', this.words[i + 1]);
-           list.push(this.words[i + 1]);
+          //  console.log('index: ', i, ' word: ', this.words[i + 1]);
+          list.push(this.words[i + 1]);
         }
         if (word === this.words[i] && i === this.words.length - 1) {
-           list.push(null);        
+          list.push(null);        
         }
         if ( i === this.words.length - 1) {
-          console.log(word, list);
-          wordTable[word] = list;
+          chains.set(word, list);
         }
       }
-   
     }
-
+    this.chains = chains;
     // console.log({firstWords});
-    console.log(wordTable);
+    console.log(chains);
     // clear the set
     firstWords.clear();
   }

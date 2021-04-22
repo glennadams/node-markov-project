@@ -1,0 +1,11 @@
+{
+  "name": "node-markov",
+  "version": "1.0.0",
+  "description": "Node project based on Markov Machines",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "glenn adams",
+  "license": "ISC"
+}

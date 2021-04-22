@@ -1,7 +1,7 @@
 # Markov Style Text Builder
 
-###. Works from the command line
-###. Reads a text file or url link
+#### Works from the command line
+#### Reads a text file or url link
 
 ## Overview
 

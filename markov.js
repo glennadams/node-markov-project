@@ -54,13 +54,34 @@ class MarkovMachine {
 
   /** return random text from chains */
 
-  makeText(numWords = 100) {
-    // TODO
+  makeText(numWords = 10) {
+    let wordList = Array.from(this.chains.keys())
+    let text = ''
+
+    for (let i = 1; i <= numWords; i++) {
+      let index = Math.floor(Math.random() * (wordList.length));
+      let word = wordList[index];
+      text = text + ' ' + word;
+      console.log('index: ', index, 'word: ', word);
+      let list = this.chains.get(word);
+      console.log('list: ', list);
+      let next = list[Math.floor(Math.random() * (list.length))]
+      console.log('next: ', next);
+      if (next !== null) {
+        text = text + ' ' + next;
+      }
+      else {
+        return text;
+      }
+    }
+    return text;
   }
 }
 
-const text = 'the cat in the hat is in the hat';
+// const text = 'the cat in the hat is in the hat';
 
-let test = new MarkovMachine(text);
 
-//test.makeChains();
+// let test = new MarkovMachine(text);
+// test.makeText(10);
+
+module.exports = {MarkovMachine};

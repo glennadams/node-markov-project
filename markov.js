@@ -17,7 +17,39 @@ class MarkovMachine {
    *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]} */
 
   makeChains() {
-    // TODO
+    // create a set to store the first words.
+    const firstWords = new Set();
+    const wordTable = {}
+    
+    console.log('Number of words : ', this.words.length);
+    console.log('Words: ', this.words);
+    // add words to the set, dups automatically excluded
+    this.words.forEach(word => firstWords.add(word));
+    
+    // find next words and build word table
+    for (let word of firstWords) {
+      let list = [];
+      for (let i = 0; i < this.words.length; i++) {
+        
+        if (word === this.words[i] && i !== this.words.length - 1) {
+           console.log('index: ', i, ' word: ', this.words[i + 1]);
+           list.push(this.words[i + 1]);
+        }
+        if (word === this.words[i] && i === this.words.length - 1) {
+           list.push(null);        
+        }
+        if ( i === this.words.length - 1) {
+          console.log(word, list);
+          wordTable[word] = list;
+        }
+      }
+   
+    }
+
+    // console.log({firstWords});
+    console.log(wordTable);
+    // clear the set
+    firstWords.clear();
   }
 
 
@@ -27,3 +59,9 @@ class MarkovMachine {
     // TODO
   }
 }
+
+const text = 'the cat in the hat is in the hat';
+
+let test = new MarkovMachine(text);
+
+//test.makeChains();
